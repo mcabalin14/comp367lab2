@@ -16,21 +16,23 @@ pipeline {
 
         stage("Build") {
             steps {
-                dir("michael_lab2") {
+                dir("michael_lab2") { 
                     sh "${MAVEN_HOME}/bin/mvn clean package"
+                } 
             }
         }
-		
+
         stage("Run Tests") {
             steps {
-               dir("michael_lab2") {
+                dir("michael_lab2") {
                     sh "${MAVEN_HOME}/bin/mvn test"
+                }
             }
         }
-    }
+    } 
 
-    post {
-	always {
+    post { 
+        always {
             junit '**/michael_lab2/target/surefire-reports/*.xml'
         }
         success {
@@ -40,4 +42,4 @@ pipeline {
             echo "Project pipeline failed."
         }
     }
-}
+} 
