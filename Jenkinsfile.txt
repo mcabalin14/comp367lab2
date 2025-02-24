@@ -5,7 +5,7 @@ pipeline {
         GIT_REPO = "https://github.com/mcabalin14/comp367lab2.git"
         GIT_BRANCH = "main"
         MAVEN_HOME = tool "Maven"
-        URL = "http://localhost:8090/michael_lab2/"
+        APP_URL = "http://localhost:8090/michael_lab2/"
     }
 
     stages {
