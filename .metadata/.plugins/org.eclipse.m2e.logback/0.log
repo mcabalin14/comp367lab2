@@ -267,3 +267,5 @@
 2025-02-24 16:37:11,782 [Worker-149: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Myhtak214\eclipse-workspace\Comp367\Lab2\michael_lab2\src\test\resources
 2025-02-24 16:37:48,166 [Worker-151: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Myhtak214\eclipse-workspace\Comp367\Lab2\michael_lab2\src\main\resources
 2025-02-24 16:37:48,168 [Worker-151: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Myhtak214\eclipse-workspace\Comp367\Lab2\michael_lab2\src\test\resources
+2025-02-24 16:39:17,684 [Worker-145: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Myhtak214\eclipse-workspace\Comp367\Lab2\michael_lab2\src\main\resources
+2025-02-24 16:39:17,686 [Worker-145: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Myhtak214\eclipse-workspace\Comp367\Lab2\michael_lab2\src\test\resources
