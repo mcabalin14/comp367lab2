@@ -21,33 +21,11 @@ pipeline {
                 } 
             }
         }
-
-        stage("Deploy & Launch") {
-            steps {
-                script {
-                    echo "Starting the application on port 8090..."
-                    sh "ls michael_lab2/target/"
-                    sh 'nohup java -jar michael_lab2/target/*.jar --server.port=8090 > app.log 2>&1 & disown'
-                    sleep 10
-
-                    def response = sh(script: "curl -s -o /dev/null -w '%{http_code}' http://localhost:8090", returnStdout: true).trim()
-                    if (response != "200") {
-                        error "App failed to start. Check logs in app.log"
-                    }
-
-                    if (isUnix()) {
-                        sh "xdg-open http://localhost:8090 || echo 'Please enter http://localhost:8090 manually in your browser.'"
-                    } else {
-                        bat 'start http://localhost:8090'
-                    }
-                }
-            }
-        }
     }
 
     post {  
         success {
-            echo "Project build, tests, and deployment completed successfully."
+            echo "Project build and tests completed successfully."
         }
         failure {
             echo "Project pipeline failed."
