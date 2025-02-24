@@ -5,7 +5,6 @@ pipeline {
         GIT_REPO = "https://github.com/mcabalin14/comp367lab2.git"
         GIT_BRANCH = "main"
         MAVEN_HOME = tool "Maven"
-        APP_URL = "http://localhost:8090/michael_lab2/"
     }
 
     stages {
@@ -17,13 +16,15 @@ pipeline {
 
         stage("Build") {
             steps {
-                sh "${MAVEN_HOME}/bin/mvn clean package"
+                dir("michael_lab2") {
+                    sh "${MAVEN_HOME}/bin/mvn clean package"
             }
         }
 		
         stage("Run Tests") {
             steps {
-                sh "${MAVEN_HOME}/bin/mvn test"
+               dir("michael_lab2") {
+                    sh "${MAVEN_HOME}/bin/mvn test"
             }
             post {
                 always {
