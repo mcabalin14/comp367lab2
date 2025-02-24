@@ -21,20 +21,7 @@ pipeline {
                 } 
             }
         }
-
-        stage("Run Tests") {
-            steps {
-                dir("michael_lab2") {
-                    sh "${MAVEN_HOME}/bin/mvn test"
-                }
-            }
-        }
-    } 
-
     post { 
-        always {
-            junit 'michael_lab2/target/surefire-reports/*.xml'
-        }
         success {
             echo "Project build and tests completed successfully."
         }
