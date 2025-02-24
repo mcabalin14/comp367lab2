@@ -1,0 +1,10 @@
+pipeline {
+    agent any
+    stages {
+        stage('Basic Pipeline') {
+            steps {
+                echo 'Basic pipeline setup'
+            }
+        }
+    }
+}
