@@ -16,20 +16,23 @@ pipeline {
 
         stage("Build") {
             steps {
-                dir("michael_lab2") {
+                dir("michael_lab2") { 
                     sh "${MAVEN_HOME}/bin/mvn clean package"
+                } 
             }
         }
-		
+
         stage("Run Tests") {
             steps {
-               dir("michael_lab2") {
+                dir("michael_lab2") {
                     sh "${MAVEN_HOME}/bin/mvn test"
+                } 
             }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
+        }
+
+        post {
+            always {
+                junit '**/target/surefire-reports/*.xml'
             }
         }
     }
