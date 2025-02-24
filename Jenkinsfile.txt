@@ -1,10 +1,44 @@
 pipeline {
-    agent any
+    agent any 
+
+    environment {
+        GIT_REPO = "https://github.com/mcabalin14/comp367lab2.git"
+        GIT_BRANCH = "main"
+        MAVEN_HOME = tool "Maven"
+        URL = "http://localhost:8090/michael_lab2/"
+    }
+
     stages {
-        stage('Basic Pipeline') {
+        stage("Checkout") {
             steps {
-                echo 'Basic pipeline setup'
+                git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
             }
+        }
+
+        stage("Build") {
+            steps {
+                sh "${MAVEN_HOME}/bin/mvn clean package"
+            }
+        }
+		
+        stage("Run Tests") {
+            steps {
+                sh "${MAVEN_HOME}/bin/mvn test"
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Project build and tests completed successfully."
+        }
+        failure {
+            echo "Project pipeline failed."
         }
     }
 }
