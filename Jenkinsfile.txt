@@ -33,7 +33,7 @@ pipeline {
 
     post { 
         always {
-            junit '**/michael_lab2/target/surefire-reports/*.xml'
+            junit 'michael_lab2/target/surefire-reports/*.xml'
         }
         success {
             echo "Project build and tests completed successfully."
