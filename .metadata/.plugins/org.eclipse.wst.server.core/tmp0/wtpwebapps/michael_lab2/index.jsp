@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.time.LocalTime" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +31,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to COMP 367!</h1>
+        <%
+            String name = request.getParameter("name");
+            if (name == null || name.trim().isEmpty()) {
+                name = "Your Grace"; 
+            }
+            LocalTime now = LocalTime.now();
+            String greeting = now.getHour() < 12 ? "Good morning" : "Good afternoon";
+        %>
+        <h1><%= greeting %>, <%= name %>! Welcome to COMP367!</h1>
         <p>Comp367 Lab 2</p>
         <p>Michael Angelo Cabalinan</p>
         <p>300924795</p>
     </div>
 </body>
 </html>
+
 
