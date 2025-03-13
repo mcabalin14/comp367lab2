@@ -10,12 +10,6 @@ pipeline {
 
     stages {
 
-	stage('Clean Workspace') {
-            steps {
-                cleanWs() 
-            }
-        }
-
         stage("Checkout") {
             steps {
                 git branch: "${GIT_BRANCH}", url: "${GIT_REPO}",
@@ -23,9 +17,14 @@ pipeline {
             }
         }
 
+	stage('Clean Workspace') {
+            steps {
+                cleanWs() 
+            }
+        }
+
         stage("Build Maven Project") {
             steps {
-                dir("michael_lab2") {
                     sh "${MAVEN_HOME}/bin/mvn clean package"
                 }
             }
@@ -34,7 +33,7 @@ pipeline {
         stage("Docker Login and Build") {
             steps {
                 withDockerRegistry([credentialsId: 'michael_docker_pw', url: '']) {
-                    sh "docker build -t ${DOCKER_IMAGE}:latest -f Dockerfile michael_lab2"
+                    sh "docker build -t ${DOCKER_IMAGE}:latest -f Dockerfile"
                 }
             }
         }
