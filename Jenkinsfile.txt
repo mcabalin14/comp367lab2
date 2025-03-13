@@ -1,10 +1,11 @@
 pipeline {
-    agent any 
+    agent any
 
     environment {
         GIT_REPO = "https://github.com/mcabalin14/comp367lab2.git"
         GIT_BRANCH = "modify-greetings"
         MAVEN_HOME = tool "Maven"
+        DOCKER_IMAGE = "mikecabs14/comp367lab2"
     }
 
     stages {
@@ -14,23 +15,41 @@ pipeline {
             }
         }
 
-        stage("Build") {
+        stage("Maven Project Build") {
             steps {
-                dir("michael_lab2") { 
+                dir("michael_lab2") {
                     sh "${MAVEN_HOME}/bin/mvn clean package"
-                } 
+                }
+            }
+        }
+
+        stage("Docker Login") {
+            steps {
+                withCredentials([string(credentialsId: 'michael_docker_pw', variable: 'DOCKER_PASSWORD')]) {
+                    sh "echo ${DOCKER_PASSWORD} | docker login -u mikecabs14 --password-stdin"
+                }
+            }
+        }
+
+        stage("Docker Image Build") {
+            steps {
+                sh "docker build -t ${DOCKER_IMAGE}:latest -f Dockerfile michael_lab2"
+            }
+        }
+
+        stage("Docker Image Push") {
+            steps {
+                sh "docker push ${DOCKER_IMAGE}:latest"
             }
         }
     }
 
-    post {  
+    post {
         success {
-            echo "Project build and tests completed successfully."
+            echo "Pipeline completed successfully."
         }
         failure {
-            echo "Project pipeline failed."
+            echo "Pipeline failed."
         }
     }
 }
-
-

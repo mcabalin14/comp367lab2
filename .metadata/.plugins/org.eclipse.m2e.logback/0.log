@@ -285,3 +285,5 @@
 2025-02-24 18:29:39,128 [Worker-155: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for michael_lab2
 2025-02-24 18:29:56,751 [Worker-148: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Myhtak214\eclipse-workspace\Comp367\Lab2\michael_lab2\src\main\resources
 2025-02-24 18:29:56,753 [Worker-148: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Myhtak214\eclipse-workspace\Comp367\Lab2\michael_lab2\src\test\resources
+2025-02-24 18:30:36,772 [Worker-156: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Myhtak214\eclipse-workspace\Comp367\Lab2\michael_lab2\src\main\resources
+2025-02-24 18:30:36,774 [Worker-156: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Myhtak214\eclipse-workspace\Comp367\Lab2\michael_lab2\src\test\resources
