@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         GIT_REPO = "https://github.com/mcabalin14/comp367lab2.git"
-        GIT_BRANCH = "modify-greetings"
+        GIT_BRANCH = "main"
         MAVEN_HOME = tool "Maven"
         DOCKER_IMAGE = "mikecabs14/comp367lab3"
     }
