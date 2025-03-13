@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    options {
+        workspace "/var/jenkins_home/workspace/michael_lab2_CI"
+	}
     environment {
         GIT_REPO = "https://github.com/mcabalin14/comp367lab2.git"
         GIT_BRANCH = "main"
