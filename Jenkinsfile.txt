@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    options {
-        workspace "/var/jenkins_home/workspace/michael_lab2_CI"
-	}
     environment {
         GIT_REPO = "https://github.com/mcabalin14/comp367lab2.git"
         GIT_BRANCH = "main"
@@ -12,18 +9,9 @@ pipeline {
     }
 
     stages {
-        stage("Initialize Workspace") {
-            steps {
-                deleteDir()
-                sh """
-                    git config --global advice.detachedHead false
-                    git config --global init.defaultBranch main
-                """
-            }
-        }
-
         stage("Checkout") {
             steps {
+                cleanWs() 
                 checkout([$class: 'GitSCM',
                     branches: [[name: "${GIT_BRANCH}"]],
                     userRemoteConfigs: [[url: "${GIT_REPO}"]]
