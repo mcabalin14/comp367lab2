@@ -12,11 +12,11 @@ pipeline {
 
         stage("Checkout") {
             steps {
-                git branch: "${GIT_BRANCH}", url: "${GIT_REPO}",
+                git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
             }
         }
 
-	stage('Clean Workspace') {
+        stage('Clean Workspace') {
             steps {
                 cleanWs() 
             }
