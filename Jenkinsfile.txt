@@ -42,10 +42,12 @@ pipeline {
             }  
         }
 
-	stage("Explicit Docker Login") {
+	stage("Explicit Docker Login Before Push") {
             steps {
                 script {
-                    sh "echo ${DOCKER_PASSWORD} | docker login -u mikecabs14 --password-stdin https://index.docker.io/v1/"
+                    withCredentials([usernamePassword(credentialsId: 'michael_docker_pw', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh "echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin https://index.docker.io/v1/"
+                    }
                 }
             }
         }
