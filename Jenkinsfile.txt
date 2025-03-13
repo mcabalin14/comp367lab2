@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'docker'
-    }
+    agent any
 
     environment {
         GIT_REPO = "https://github.com/mcabalin14/comp367lab2.git"
