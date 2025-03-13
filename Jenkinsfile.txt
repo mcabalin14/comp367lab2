@@ -13,7 +13,6 @@ pipeline {
         stage("Checkout") {
             steps {
                 git branch: "${GIT_BRANCH}", url: "${GIT_REPO}",
-		poll: true
             }
         }
 
@@ -25,8 +24,7 @@ pipeline {
 
         stage("Build Maven Project") {
             steps {
-                    sh "${MAVEN_HOME}/bin/mvn clean package"
-                }
+                sh "${MAVEN_HOME}/bin/mvn clean package"
             }
         }
 
