@@ -11,8 +11,10 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
-            }
+    		dir("${WORKSPACE}") {
+        	git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
+    }
+}
         }
 
         stage("Build Maven Project") {
