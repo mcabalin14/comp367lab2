@@ -10,17 +10,17 @@ pipeline {
 
     stages {
 
+	stage('Clean Workspace') {
+            steps {
+                cleanWs() 
+            }
+        }
+
         stage("Checkout") {
             steps {
                 dir("comp367lab3") {   
                     git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
                 }
-            }
-        }
-
-        stage('Clean Workspace') {
-            steps {
-                cleanWs() 
             }
         }
 
