@@ -11,9 +11,10 @@ pipeline {
     stages {
 
         stage("Checkout") {
-            steps 
-		dir("comp367lab3"){
-                git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
+            steps {
+                dir("comp367lab3") {   
+                    git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
+                }
             }
         }
 
@@ -24,9 +25,10 @@ pipeline {
         }
 
         stage("Build Maven Project") {
-            steps 
-		dir("comp367lab3"){
-                sh "${MAVEN_HOME}/bin/mvn clean package"
+            steps {
+                dir("comp367lab3") {   
+                    sh "${MAVEN_HOME}/bin/mvn clean package"
+                }
             }
         }
 
