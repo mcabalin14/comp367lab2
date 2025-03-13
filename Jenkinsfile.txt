@@ -9,6 +9,16 @@ pipeline {
     }
 
     stages {
+        stage("Initialize Workspace") {
+            steps {
+                deleteDir()
+                sh """
+                    git config --global advice.detachedHead false
+                    git config --global init.defaultBranch main
+                """
+            }
+        }
+
         stage("Checkout") {
             steps {
                 checkout([$class: 'GitSCM',
