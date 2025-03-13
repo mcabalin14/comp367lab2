@@ -41,6 +41,8 @@
         %>
         <h1><%= greeting %>, <%= name %>! Welcome to COMP367!</h1>
         <p>Comp367 Lab 2</p>
+        <p>Michael Angelo Cabalinan</p>
+        <p>300924795</p>
     </div>
 </body>
 </html>
