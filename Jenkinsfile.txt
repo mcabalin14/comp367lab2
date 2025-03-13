@@ -9,9 +9,17 @@ pipeline {
     }
 
     stages {
+
+	stage('Clean Workspace') {
+            steps {
+                cleanWs() 
+            }
+        }
+
         stage("Checkout") {
             steps {
-                git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
+                git branch: "${GIT_BRANCH}", url: "${GIT_REPO}",
+		poll: true
             }
         }
 
