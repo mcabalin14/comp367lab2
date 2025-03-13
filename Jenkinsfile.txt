@@ -26,7 +26,7 @@ pipeline {
 
         stage("Build Maven Project") {
             steps {
-                dir("comp367lab3") {   
+                dir("comp367lab3/michael_lab2") {   
                     sh "${MAVEN_HOME}/bin/mvn clean package"
                 }
             }
